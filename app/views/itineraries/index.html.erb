@@ -1,14 +1,15 @@
 <h1>Itineraries</h1>
-
 <table>
   <tr>
     <th>Location</th>
     <th>Travel Date</th>
+    <th>Estimated Cost</th>
   </tr>
 <% @itineraries.each do |itinerary| %>
-  <tr>
+  <tr class="<%= itinerary_row_class(itinerary) %>">
     <td><%= itinerary.location %></td>
     <td><%= itinerary.travel_on %></td>
+    <td><%= number_to_currency(itinerary.estimated_cost, unit: "PHP") %></td>
     <td>
     	<%= link_to 'Show', { action: 'show', id: itinerary.id }, class: 'btn btn-default' %>
   		<%= link_to 'Edit', { action: 'edit', id: itinerary.id }, class: 'btn btn-default' %>
@@ -19,3 +20,5 @@
 </table>
 
 <%= link_to "New", { action: 'new' } , class: 'btn btn-default' %>
+
+<h2>Remaining budget: <em><%= number_to_currency(@remaining_budget, unit: "PHP") %></em></h2>

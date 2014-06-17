@@ -6,6 +6,7 @@ end
 
 def index
 	@itineraries = Itinerary.all
+	@remaining_budget = Itinerary.remaining_budget
 end
 
 def new
@@ -37,7 +38,7 @@ end
 private
 	
 	def itinerary_params
-		params.require(:itinerary).permit(:location, :travel_on)
+		params.require(:itinerary).permit(:location, :travel_on, :estimated_cost)
 	end
 
 
