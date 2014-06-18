@@ -1,9 +1,10 @@
 <h1>Itineraries</h1>
 <table>
   <tr>
-    <th>Location</th>
-    <th>Travel Date</th>
-    <th>Estimated Cost</th>
+    <th><%= sortable 'location' %></th>
+    <th><%= sortable 'travel_on', 'Travel Date' %></th>
+    <th><%= sortable 'estimated_cost' %></th>
+    <th></th>
   </tr>
 <% @itineraries.each do |itinerary| %>
   <tr class="<%= itinerary_row_class(itinerary) %>">
@@ -13,6 +14,7 @@
     <td>
     	<%= link_to 'Show', { action: 'show', id: itinerary.id }, class: 'btn btn-default' %>
   		<%= link_to 'Edit', { action: 'edit', id: itinerary.id }, class: 'btn btn-default' %>
+      <%= link_to 'Delete', { action: 'show', id: itinerary.id }, method: :delete, class: 'btn btn-default' %>
   	</td>	
   <tr>
 <% end %>
