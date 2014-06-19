@@ -1,0 +1,22 @@
+<h1>Trips</h1>
+<table>
+  <tr>
+    <th><%= sortable 'name' %></th>
+    <th></th>
+  </tr>
+<% @trips.each do |trip| %>
+  <tr>
+    <td><%= trip.name %></td>
+    <td>
+    	<%= link_to 'Show', { action: 'show', id: trip.id }, class: 'btn btn-default' %>
+  		<%= link_to 'Edit', { action: 'edit', id: trip.id }, class: 'btn btn-default' %>
+      <%= link_to 'Delete', { action: 'show', id: trip.id }, method: :delete, class: 'btn btn-default' %>
+  	</td>	
+  <tr>
+<% end %>
+
+</table>
+
+<%= link_to "New", { action: 'new' } , class: 'btn btn-default' %>
+
+<h2>Remaining budget: <em><%= number_to_currency(@remaining_budget, unit: "PHP") %></em></h2>

@@ -1,5 +1,6 @@
 class Itinerary < ActiveRecord::Base
 	validates :location, presence: true
+	belongs_to :trip
 
 	class << self
 

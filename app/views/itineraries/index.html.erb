@@ -4,6 +4,7 @@
     <th><%= sortable 'location' %></th>
     <th><%= sortable 'travel_on', 'Travel Date' %></th>
     <th><%= sortable 'estimated_cost' %></th>
+    <th><%= sortable 'trip_id' %></th>
     <th></th>
   </tr>
 <% @itineraries.each do |itinerary| %>
@@ -11,6 +12,7 @@
     <td><%= itinerary.location %></td>
     <td><%= itinerary.travel_on %></td>
     <td><%= number_to_currency(itinerary.estimated_cost, unit: "PHP") %></td>
+    <td><%= itinerary.trip %></td>
     <td>
     	<%= link_to 'Show', { action: 'show', id: itinerary.id }, class: 'btn btn-default' %>
   		<%= link_to 'Edit', { action: 'edit', id: itinerary.id }, class: 'btn btn-default' %>

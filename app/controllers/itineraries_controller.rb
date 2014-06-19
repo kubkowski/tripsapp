@@ -40,14 +40,14 @@ end
 def destroy
 	@itinerary = Itinerary.find(params[:id])
 	@itinerary.destroy
-	flash[:notice] = "You have successfully deleted a itinerary"
+	flash[:notice] = "You have successfully deleted itinerary"
 	redirect_to action: 'index'
 end
 
 private
 	
 	def itinerary_params
-		params.require(:itinerary).permit(:location, :travel_on, :estimated_cost)
+		params.require(:itinerary).permit(:location, :travel_on, :estimated_cost, :trip_id)
 	end
 
 	def sort_column
