@@ -3,15 +3,18 @@ class ItinerariesController < ApplicationController
 helper_method :sort_column, :sort_direction
 
 def show
+  @trip = Trip.find(params[:trip_id])
   @itinerary = Itinerary.find(params[:id])
 end
 
 def index
-	@itineraries = Itinerary.order([sort_column, sort_direction].join(" "))
+	@trip = Trip.find(params[:trip_id])
+	@itineraries = @trip.itineraries.order(sort_column + " " + sort_direction)
 	@remaining_budget = Itinerary.remaining_budget
 end
 
 def new
+	@trip = Trip.find(params[:trip_id])
 	@itinerary = Itinerary.new
 end
 
