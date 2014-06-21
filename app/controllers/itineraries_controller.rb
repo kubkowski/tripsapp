@@ -15,7 +15,7 @@ end
 
 def new
 	@trip = Trip.find(params[:trip_id])
-	@itinerary = Itinerary.new
+	@itinerary = Itinerary.new(trip: @trip)
 end
 
 def update
@@ -28,6 +28,7 @@ def update
 end
 
 def edit
+	@trip = Trip.find(params[:trip_id])
 	@itinerary = Itinerary.find(params[:id])
 end
 
