@@ -1,20 +1,18 @@
 class ItinerariesController < ApplicationController
 
 helper_method :sort_column, :sort_direction
+before_action :find_trip, only: [:index, :show, :new, :edit]
 
 def show
-  @trip = Trip.find(params[:trip_id])
   @itinerary = Itinerary.find(params[:id])
 end
 
 def index
-	@trip = Trip.find(params[:trip_id])
 	@itineraries = @trip.itineraries.order(sort_column + " " + sort_direction)
 	@remaining_budget = Itinerary.remaining_budget
 end
 
 def new
-	@trip = Trip.find(params[:trip_id])
 	@itinerary = Itinerary.new(trip: @trip)
 end
 
@@ -28,7 +26,6 @@ def update
 end
 
 def edit
-	@trip = Trip.find(params[:trip_id])
 	@itinerary = Itinerary.find(params[:id])
 end
 
@@ -60,6 +57,10 @@ private
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def find_trip
+  	@trip = Trip.find(params[:trip_id])
   end
 
 end
