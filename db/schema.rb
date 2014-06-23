@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619122553) do
+ActiveRecord::Schema.define(version: 20140622093320) do
+
+  create_table "budgets", force: true do |t|
+    t.decimal  "budget",    precision: 10, scale: 2, default: 0.0
+    t.decimal  "decimal",   precision: 10, scale: 2, default: 0.0
+    t.datetime "date_from",                                        null: false
+    t.datetime "date_to",                                          null: false
+  end
 
   create_table "itineraries", force: true do |t|
     t.string  "location",                                             null: false
