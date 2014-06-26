@@ -1,9 +1,12 @@
 class TripsController < ApplicationController
 
 helper_method :sort_column, :sort_direction
+before_action :find_trip, except: [:index, :new, :create]
+
+before_action :list_budget, only: [:index]
+
 
 def show
-  @trip = Trip.find(params[:id])
 end
 
 def index
@@ -15,7 +18,6 @@ def new
 end
 
 def update
-	@trip = Trip.find(params[:id])
 	if @trip.update(trips_params)
 		redirect_to action: 'show', id: @trip.id
 	else
@@ -24,7 +26,6 @@ def update
 end
 
 def edit
-	@trip = Trip.find(params[:id])
 end
 
 def create
@@ -37,14 +38,23 @@ def create
 end
 
 def destroy
-	@trip = Trip.find(params[:id])
 	@trip.destroy
 	flash[:notice] = "You have successfully deleted trip"
 	redirect_to action: 'index'
 end
 
 private
+
+	def list_budget
+		@budgets = Budget.order('date_from desc')
+		@budget = Budget.new
+	end
 	
+	def find_trip
+		id = params[:trip_id] ? params[:trip_id] : params[:id]
+   	@trip = Trip.find(id)
+	end
+
 	def trips_params
 		params.require(:trip).permit(:name)
 	end
