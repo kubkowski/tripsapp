@@ -15,3 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$('.budget a.title').on('click', function(e) {
+  e.preventDefault();
+  $('.budgets').toggle('hide');
+});

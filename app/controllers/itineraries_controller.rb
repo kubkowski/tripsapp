@@ -9,7 +9,6 @@ end
 
 def index
 	@itineraries = @trip.itineraries.order(sort_column + " " + sort_direction)
-	@remaining_budget = Itinerary.remaining_budget
 end
 
 def new

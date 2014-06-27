@@ -25,4 +25,4 @@
 
 <%= link_to "New", { action: 'new' } , class: 'btn btn-default' %>
 
-<h2>Remaining budget: <em><%= number_to_currency(@remaining_budget, unit: "PHP") %></em></h2>
+<%= show_remaining_budget %>
