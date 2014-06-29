@@ -42,3 +42,10 @@ gem 'unicorn'
 gem 'therubyracer'
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+
+# Use minitest for tests
+gem 'minitest-rails'
+
+group :test do
+  gem 'minitest-rails-capybara'
+end
