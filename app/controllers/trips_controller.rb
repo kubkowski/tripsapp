@@ -18,6 +18,8 @@ def new
 end
 
 def update
+	@trip.attributes = params[:trip].permit(:name)
+ 	@trip.user_id = current_user.id
 	if @trip.update(trips_params)
 		redirect_to action: 'show', id: @trip.id
 	else
@@ -30,6 +32,8 @@ end
 
 def create
 	@trip = Trip.new(trips_params)
+	@trip.attributes = params[:trip].permit(:name)
+  @trip.user_id = current_user.id
   if @trip.save
     redirect_to action: 'show', id: @trip.id
   else

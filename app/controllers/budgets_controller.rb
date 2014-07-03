@@ -4,7 +4,8 @@ before_action :find_budget, only: [:update, :destroy]
 
 def create
 	@budget = Budget.new(budget_params)
-	@budget.user_id = current_user.id
+	@budget.attributes = params[:budget].permit(:budget, :date_from, :date_to)
+  @budget.user_id = current_user.id
 	if @budget.save
 		flash[:notice] = "Successfully added your budget"	
 	else
@@ -14,7 +15,8 @@ def create
 end
 
 def update
-	@budget.user_id = current_user.id
+	@budget.attributes = params[:budget].permit(:budget, :date_from, :date_to)
+  @budget.user_id = current_user.id
 	if @budget.update(budget_params)
 		flash[:notice] = "Successfully added your budget"
 	else

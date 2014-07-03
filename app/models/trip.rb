@@ -1,4 +1,7 @@
 class Trip < ActiveRecord::Base
+	
+	belong_to :user
+	validates :user_id, presence: true
 	validates :name, presence: true
 	has_many :itineraries
 

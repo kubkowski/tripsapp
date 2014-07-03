@@ -17,6 +17,7 @@ end
 
 def update
 	@itinerary = Itinerary.find(params[:id])
+	@itinerary.user_id = current_user.id
 	if @itinerary.update(itinerary_params)
 		redirect_to action: 'show', id: @itinerary.id
 	else
@@ -30,6 +31,7 @@ end
 
 def create
 	@itinerary = Itinerary.new(itinerary_params)
+	@itinerary.user_id = current_user.id
   if @itinerary.save
     redirect_to action: 'show', id: @itinerary.id
   else

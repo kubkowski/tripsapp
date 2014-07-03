@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630124757) do
+ActiveRecord::Schema.define(version: 20140703125138) do
 
   create_table "budgets", force: true do |t|
     t.decimal  "budget",    precision: 10, scale: 2, default: 0.0
     t.decimal  "decimal",   precision: 10, scale: 2, default: 0.0
     t.datetime "date_from",                                        null: false
     t.datetime "date_to",                                          null: false
+    t.integer  "user_id"
   end
 
   create_table "itineraries", force: true do |t|
@@ -25,10 +26,12 @@ ActiveRecord::Schema.define(version: 20140630124757) do
     t.date    "travel_on"
     t.decimal "estimated_cost", precision: 5, scale: 2, default: 0.0
     t.integer "trip_id"
+    t.integer "user_id"
   end
 
   create_table "trips", force: true do |t|
-    t.string "name", null: false
+    t.string  "name",    null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
