@@ -51,6 +51,8 @@ gem 'minitest-rails'
 
 group :test do
   gem 'minitest-rails-capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl'
 end
 
 group :production do
