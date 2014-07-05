@@ -1,6 +1,6 @@
 class Itinerary < ActiveRecord::Base
 	belongs_to :trip
-	belong_to :user
+	belongs_to :user
 
 	validates :user_id, presence: true
 	validates :location, presence: true

@@ -10,7 +10,7 @@ def show
 end
 
 def index
-	@trips = Trip.order([sort_column, sort_direction].join(" "))
+	@trips = Trip.where(user_id: current_user.id).order([sort_column, sort_direction].join(" "))
 end
 
 def new
@@ -50,7 +50,7 @@ end
 private
 
 	def list_budget
-		@budgets = Budget.order('date_from desc')
+		@budgets = Budget.where(user_id: current_user.id).order('date_from desc')
 		@budget = Budget.new
 	end
 	

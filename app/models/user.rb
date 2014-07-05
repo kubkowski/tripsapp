@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   has_many :budgets
 	has_many :trips
 	has_many :itineraries
+
+	def name
+  	[first_name, last_name].join(" ")
+	end
 end
